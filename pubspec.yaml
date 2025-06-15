@@ -2,7 +2,7 @@ name: ui_widgets
 description: "A Flutter package for efficient UI state management, handling loading, empty views, content display, caching, and pull-to-refresh with customizable widgets."
 version: 0.0.1
 homepage: https://github.com/abdelrahmanghanem
-repository: https://github.com/abdelrahmanghanem/main_widgets
+repository: https://github.com/abdelrahmanghanem/ui_widgets
 
 environment:
   sdk: ^3.8.1
