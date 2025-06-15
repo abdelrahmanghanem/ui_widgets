@@ -1,13 +1,13 @@
 # SmartUIComponents Widget
 
-The `ui_widgets` A Flutter package for efficient UI state management, handling loading, empty views, content display, caching, and pull-to-refresh with customizable widgets.
+The `widgets_box` A Flutter package for efficient UI state management, handling loading, empty views, content display, caching, and pull-to-refresh with customizable widgets.
 
 <p>
-    <a href="https://github.com/abdelrahmanghanem/ui_widgets"><img src="https://img.shields.io/github/stars/abdelrahmanghanem/ui_widgets?style=social" alt="Repo stars"></a>
-    <a href="https://github.com/abdelrahmanghanem/ui_widgets/commits/main"><img src="https://img.shields.io/github/last-commit/abdelrahmanghanem/ui_widgets/main?logo=git" alt="Last Commit"></a>
-    <a href="https://github.com/abdelrahmanghanem/ui_widgets/pulls"><img src="https://img.shields.io/github/issues-pr/abdelrahmanghanem/ui_widgets" alt="Repo PRs"></a>
-    <a href="https://github.com/abdelrahmanghanem/ui_widgets/issues?q=is%3Aissue+is%3Aopen"><img src="https://img.shields.io/github/issues/abdelrahmanghanem/ui_widgets" alt="Repo issues"></a>
-    <a href="https://github.com/abdelrahmanghanem/ui_widgets/blob/main/LICENSE"><img src="https://badgen.net/github/license/abdelrahmanghanem/ui_widgets" alt="License"></a>
+    <a href="https://github.com/abdelrahmanghanem/widgets_box"><img src="https://img.shields.io/github/stars/abdelrahmanghanem/widgets_box?style=social" alt="Repo stars"></a>
+    <a href="https://github.com/abdelrahmanghanem/widgets_box/commits/main"><img src="https://img.shields.io/github/last-commit/abdelrahmanghanem/widgets_box/main?logo=git" alt="Last Commit"></a>
+    <a href="https://github.com/abdelrahmanghanem/widgets_box/pulls"><img src="https://img.shields.io/github/issues-pr/abdelrahmanghanem/widgets_box" alt="Repo PRs"></a>
+    <a href="https://github.com/abdelrahmanghanem/widgets_box/issues?q=is%3Aissue+is%3Aopen"><img src="https://img.shields.io/github/issues/abdelrahmanghanem/widgets_box" alt="Repo issues"></a>
+    <a href="https://github.com/abdelrahmanghanem/widgets_box/blob/main/LICENSE"><img src="https://badgen.net/github/license/abdelrahmanghanem/widgets_box" alt="License"></a>
 </p>
 
 ## Table of Contents
@@ -44,7 +44,7 @@ To use the `MainScreen` widget in your Flutter project, follow these steps:
 
 ```yaml
 dependencies:
-  ui_widgets: <latest_version>
+  widgets_box: <latest_version>
 ```
 2. to handle responsive
 
@@ -310,11 +310,11 @@ Here is an example demonstrating how to use these parameters in the `Extensions`
 ## Contributions
 Feel free to contribute to this project.
 
-If you find a bug or want a feature, but don't know how to fix/implement it, please fill an [issue](https://github.com/abdelrahmanghanem/ui_widgets/issues).  
-If you fixed a bug or implemented a feature, please send a [pull request](https://github.com/abdelrahmanghanem/ui_widgets/pulls).
+If you find a bug or want a feature, but don't know how to fix/implement it, please fill an [issue](https://github.com/abdelrahmanghanem/widgets_box/issues).  
+If you fixed a bug or implemented a feature, please send a [pull request](https://github.com/abdelrahmanghanem/widgets_box/pulls).
 
-<a href="https://github.com/abdelrahmanghanem/ui_widgets/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=abdelrahmanghanem/ui_widgets"  alt=""/>
+<a href="https://github.com/abdelrahmanghanem/widgets_box/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=abdelrahmanghanem/widgets_box"  alt=""/>
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
