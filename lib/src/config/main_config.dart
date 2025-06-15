@@ -1,27 +1,43 @@
 import 'package:flutter/material.dart';
 
-import 'config_model.dart';
+import 'button_config.dart';
+import 'text_field_config.dart';
+import 'widget_box_config.dart';
 
-export 'config_model.dart';
+export 'button_config.dart';
+export 'text_field_config.dart';
+export 'widget_box_config.dart';
 
-class MainTextFiledConfigProvider extends InheritedWidget {
-  final ConfigModel config;
+class WidgetsBoxConfigProvider extends InheritedWidget {
+  final WidgetsBoxConfig config;
 
-  const MainTextFiledConfigProvider({
+  const WidgetsBoxConfigProvider({
     super.key,
     required this.config,
     required super.child,
   });
 
-  static ConfigModel of(BuildContext context) {
+  static WidgetsBoxConfig of(BuildContext context) {
     return context
-            .dependOnInheritedWidgetOfExactType<MainTextFiledConfigProvider>()
+            .dependOnInheritedWidgetOfExactType<WidgetsBoxConfigProvider>()
             ?.config ??
-        const ConfigModel(defaultWidth: 370, defaultHeight: 44);
+        const WidgetsBoxConfig(
+          width: 370,
+          height: 44,
+          radius: 8,
+          contentPadding: EdgeInsets.symmetric(horizontal: 8),
+          textFieldConfig: TextFieldConfig(cursorHeight: 18.0),
+          buttonConfig: ButtonConfig(
+            width: 370,
+            height: 44,
+            radius: 8,
+            contentPadding: EdgeInsets.symmetric(horizontal: 8),
+          ),
+        );
   }
 
   @override
-  bool updateShouldNotify(MainTextFiledConfigProvider oldWidget) {
+  bool updateShouldNotify(WidgetsBoxConfigProvider oldWidget) {
     return config != oldWidget.config;
   }
 }

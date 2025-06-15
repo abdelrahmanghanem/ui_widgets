@@ -10,9 +10,7 @@ class CircularIndicatorWidget extends StatelessWidget {
       child: SizedBox(
         width: 15,
         height: 15,
-        child: CircularProgressIndicator(
-          color: color,
-        ),
+        child: CircularProgressIndicator(color: color),
       ),
     );
   }

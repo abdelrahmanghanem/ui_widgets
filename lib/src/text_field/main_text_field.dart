@@ -147,7 +147,7 @@ class MainTextField extends StatefulWidget {
     this.textInputAction = TextInputAction.next,
     this.showAsterisk = false,
     this.isEnable = true,
-    this.cursorHeight = 18.0,
+    this.cursorHeight,
     this.inputFormatters,
     this.hintTextDirection,
     this.initialValue,
@@ -589,11 +589,11 @@ class MainTextField extends StatefulWidget {
 class _MainTextFieldState extends State<MainTextField> {
   @override
   Widget build(BuildContext context) {
-    final config = MainTextFiledConfigProvider.of(context);
+    final config = WidgetsBoxConfigProvider.of(context);
 
     return ConstrainedBox(
       constraints: BoxConstraints(
-        maxWidth: widget.maxWidth ?? config.defaultWidth,
+        maxWidth: widget.maxWidth ?? config.width ?? 370,
       ),
       child: Column(
         children: [
@@ -679,8 +679,8 @@ class _MainTextFieldState extends State<MainTextField> {
                     prefixIcon: widget.prefixIcon,
                     suffixIcon: widget.suffixIcon,
                     contentPadding:
-                        widget.contentPadding ??
-                        const EdgeInsets.symmetric(horizontal: 8),
+                        widget.contentPadding ?? config.contentPadding,
+
                     labelText: widget.labelText,
                     hintText: widget.hintText,
                     isRequired: widget.isRequired,
@@ -689,7 +689,8 @@ class _MainTextFieldState extends State<MainTextField> {
                     isEnable: widget.isEnable,
                   ),
 
-              cursorHeight: widget.cursorHeight,
+              cursorHeight:
+                  widget.cursorHeight ?? config.textFieldConfig?.cursorHeight,
             ),
           ),
         ],

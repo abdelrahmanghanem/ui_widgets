@@ -15,21 +15,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StyledToast(
-      locale: local,
-      textDirection: local.languageCode == 'ar'
-          ? TextDirection.rtl
-          : TextDirection.ltr,
-      child: MaterialApp(
-        title: 'Flutter Demo',
+    return WidgetsBoxConfigProvider(
+      config: WidgetsBoxConfig(textFieldConfig: TextFieldConfig()),
+      child: StyledToast(
         locale: local,
-        localizationsDelegates: context.smartLocalizeDelegates,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+        textDirection: local.languageCode == 'ar'
+            ? TextDirection.rtl
+            : TextDirection.ltr,
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          locale: local,
+          localizationsDelegates: context.smartLocalizeDelegates,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          supportedLocales: [Locale('ar'), Locale('en')],
+          home: const MyHomePage(),
         ),
-        supportedLocales: [Locale('ar'), Locale('en')],
-        home: const MyHomePage(),
       ),
     );
   }
@@ -40,6 +43,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -50,6 +54,15 @@ class MyHomePage extends StatelessWidget {
           return ListView(
             padding: const EdgeInsets.all(16.0),
             children: [
+              Center(
+                child: SizedBox(
+                  width: 15,
+                  height: 15,
+                  child: CircularProgressIndicator.adaptive(
+                    backgroundColor: Colors.red,
+                  ),
+                ),
+              ),
               Text(SmartLocalize.goodAfternoon),
               MainButton.icon(
                 label: 'ok',

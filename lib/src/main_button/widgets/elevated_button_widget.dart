@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../widgets_box.dart';
 import '../decoration/button_style_class.dart';
 import '../functions/get_button_color.dart';
 import 'circular_indicator_widget.dart';
-import 'main_button.dart';
 
 class ElevatedButtonWidget extends StatelessWidget {
   ///  width  => default value is double.infinity
@@ -81,12 +81,16 @@ class ElevatedButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final radiusValue = BorderRadius.all(Radius.circular(radius ?? 8));
+    final config = WidgetsBoxConfigProvider.of(context);
     final typeValue = type ?? MainButtonEnum.primary;
     return DecoratedBox(
       decoration: ShapeDecoration(
         color: Colors.transparent,
-        shape: RoundedRectangleBorder(borderRadius: radiusValue),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(radius ?? config.radius ?? 8),
+          ),
+        ),
         shadows: !(showShadow ?? false)
             ? null
             : const [
@@ -101,9 +105,10 @@ class ElevatedButtonWidget extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyleClass(
           width: width ?? double.infinity,
-          maxWidth: maxWidth ?? 370,
-          height: height ?? 44,
-          radius: radius ?? 8,
+          maxWidth:
+              maxWidth ?? config.buttonConfig?.width ?? config.width ?? 370,
+          height: height ?? config.height ?? 44,
+          radius: radius ?? config.radius ?? 8,
           labelColor: getTextColor(typeValue, context, color: labelColor),
           borderColor: getBorderColor(typeValue, context, color: borderColor),
           background: getBorderColor(

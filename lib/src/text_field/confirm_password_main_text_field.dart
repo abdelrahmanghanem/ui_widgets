@@ -73,27 +73,28 @@ class _ConfirmPasswordMainTextFieldState
           onEditingComplete: widget.onEditingComplete,
           onSaved: widget.onSaved,
           isRequired: widget.isRequired,
-          validator: widget.validator ??
+          validator:
+              widget.validator ??
               (val) => validateConfirmPasswordFormat(
-                    password: val,
-                    confirmPassword: widget.passwordValue,
-                  ),
+                password: val,
+                confirmPassword: widget.passwordValue,
+              ),
           textInputAction: widget.textInputAction,
           focusNode: widget.focusNode,
           textCapitalization: widget.textCapitalization,
           textAlignVertical: widget.textAlignVertical,
           decoration: widget.decoration,
           keyboardType: TextInputType.visiblePassword,
-          prefixIcon: widget.prefixIcon ??
+          prefixIcon:
+              widget.prefixIcon ??
               (widget.showPrefixIcon
                   ? const Padding(
                       padding: EdgeInsets.all(10),
-                      child: PrefixIconWidget(
-                        assetPath: AppImages.lock,
-                      ),
+                      child: PrefixIconWidget(assetPath: AppImages.lock),
                     )
                   : null),
-          suffixIcon: widget.suffixIcon ??
+          suffixIcon:
+              widget.suffixIcon ??
               IconButton(
                 onPressed: () => setState(() {
                   showPassword = !showPassword;
@@ -106,7 +107,7 @@ class _ConfirmPasswordMainTextFieldState
               widget.hintText ?? SmartLocalizePlaceholder.pleaseConfirmPassword,
           isDense: widget.isDense,
           isEnable: widget.isEnable,
-          cursorHeight: widget.cursorHeight ?? 18.0,
+          cursorHeight: widget.cursorHeight,
           hideAsterisk: widget.hideAsterisk,
           labelText: widget.labelText,
           filled: widget.filled,
