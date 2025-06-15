@@ -1,39 +1,320 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# SmartUIComponents Widget
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+The `ui_widgets` A Flutter package for efficient UI state management, handling loading, empty views, content display, caching, and pull-to-refresh with customizable widgets.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+<p>
+    <a href="https://github.com/abdelrahmanghanem/ui_widgets"><img src="https://img.shields.io/github/stars/abdelrahmanghanem/ui_widgets?style=social" alt="Repo stars"></a>
+    <a href="https://github.com/abdelrahmanghanem/ui_widgets/commits/main"><img src="https://img.shields.io/github/last-commit/abdelrahmanghanem/ui_widgets/main?logo=git" alt="Last Commit"></a>
+    <a href="https://github.com/abdelrahmanghanem/ui_widgets/pulls"><img src="https://img.shields.io/github/issues-pr/abdelrahmanghanem/ui_widgets" alt="Repo PRs"></a>
+    <a href="https://github.com/abdelrahmanghanem/ui_widgets/issues?q=is%3Aissue+is%3Aopen"><img src="https://img.shields.io/github/issues/abdelrahmanghanem/ui_widgets" alt="Repo issues"></a>
+    <a href="https://github.com/abdelrahmanghanem/ui_widgets/blob/main/LICENSE"><img src="https://badgen.net/github/license/abdelrahmanghanem/ui_widgets" alt="License"></a>
+</p>
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Widgets Usage](#widgets-usage)
+    - [SmartCachedImages](#smartcachedimages)
+    - [SmartEmptyWidget](#smartemptywidget)
+    - [SmartLoadingWidget](#smartloadingwidget)
+    - [SmartScreen](#smartscreen)
+    - [SmartTagWidget](#smarttagwidget)
+    - [SmartStatusWidget](#smartstatuswidget)
+- [Functions Usage](#functions-usage)
+    - [ShowToast](#showtoast)
+    - [HexColor](#hexcolor)
+    - [Separated](#separated)
+    - [showBottomSheetWidget](#showbottomsheet)
+- [Extension Usage](#extension-usage)
+    - [Extensions](#extensions)
+- [Contributions](#contributions)
+- [License](#license)
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Displays loading indicator when data is being fetched.
+- Shows a custom or default empty screen when there is no data.
+- Wraps the main content in a pull-to-refresh functionality.
 
-## Getting started
+## Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+To use the `MainScreen` widget in your Flutter project, follow these steps:
+1. Add the following to your `pubspec.yaml`:
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+```yaml
+dependencies:
+  ui_widgets: <latest_version>
+```
+2. to handle responsive
 
 ```dart
-const like = 'sample';
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // this very important
+    MainWidgetsUtil.init(
+      context,
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+    );
+    return MaterialApp(
+      home: const HomeScreen(),
+    );
+  }
+}
 ```
 
-## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+
+
+## Widgets Usage
+
+Here is an example demonstrating how to use these parameters in the `MainScreen` widget:
+
+### SmartScreen
+
+```dart
+    SmartScreen(
+      isLoading: true, // Data is being loaded
+      isEmpty: false, // Data is available
+      child: YourMainContentWidget(), // Main content to display
+      onRefresh: () async {
+      // Logic for refreshing data
+      },
+      emptyWidget: CustomEmptyWidget(
+        message: "No data available",
+      ), // Optional empty widget
+      message: "Please check back later.", // Optional message for empty state
+    );
+```
+
+### SmartCachedImages
+
+```dart
+  SmartCachedImages(
+    imageUrl: 'https://example.com/image.jpg',
+  ),
+``` 
+
+
+### SmartEmptyWidget
+
+```dart
+  SmartEmptyWidget(
+     message: 'The message of EmptyWidget',
+  ),
+```
+
+### SmartLoadingWidget
+
+```dart
+    const SmartLoadingWidget()
+```
+
+<details>
+<summary>Example Code </summary>
+
+```dart
+ SmartLoadingWidget(
+    path: 'assets/animation.gif',
+    loadingType: LoadingType.gif,
+  )
+```
+```dart
+  const SmartLoadingWidget(
+    path: 'assets/animation1.json',
+    loadingType: LoadingType.lottie,
+  )
+```
+</details>
+
+### SmartTagWidget
+
+```dart
+  SmartTagWidget(
+    text: 'Tag Text',
+    backgroundColor: Colors.red,
+    textColor: Colors.white,
+  )
+```
+### SmartStatusWidget
+
+```dart
+   const Card(
+        child: SmartStatusWidget(
+          text: '30%',
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+            child: SizedBox(
+            height: 200,
+            width: 120,
+              child: Column(
+                children: [
+                  SmartCachedImages(
+                  imageUrl: '',
+                  height: 120,
+                  ),
+                  Text('title'),
+                  Text('subtitle'),
+                ],
+              ),
+            ),
+        ),
+),
+```
+
+
+## Functions Usage
+
+Here is an example demonstrating how to use these parameters in the `Functions` :
+
+### ShowToast
+
+<details>
+<summary>Example Code </summary>
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StyledToast(
+      backgroundColor: Colors.red,
+      textStyle: const TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+      ),
+      locale: const Locale('en', 'US'),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: false,
+        ),
+        home: const MyHomePage(),
+      ),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('home'),
+      ),
+      body: Column(
+        children: [
+          TextButton(
+            onPressed: () => showToastError(msg: 'show Toast Error'),
+            child: const Text('show Toast Error'),
+          ),
+          TextButton(
+            onPressed: () => showToastSuccess(msg: 'show Toast Success'),
+            child: const Text('Show Toast Success'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+</details>
+
+### HexColor
+
+<details>
+<summary>Example Code </summary>
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StyledToast(
+      backgroundColor: Colors.red,
+      textStyle: const TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+      ),
+      locale: const Locale('en', 'US'),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: false,
+        ),
+        home: const MyHomePage(),
+      ),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('home'),
+      ),
+      body: Column(
+        children: [
+          TextButton(
+            onPressed: () => showToastError(msg: 'show Toast Error'),
+            child: const Text('show Toast Error'),
+          ),
+          TextButton(
+            onPressed: () => showToastSuccess(msg: 'show Toast Success'),
+            child: const Text('Show Toast Success'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+</details>
+
+
+## Extensions Usage
+
+Here is an example demonstrating how to use these parameters in the `Extensions` :
+
+### Extensions
+
+```dart
+  Text(
+   context.isArabic? 'isArabic':'isEnglish',
+    style: context.bodySmall.copyWith(
+        color:context.isDark? Colors.white: Colors.black,
+    ),
+  ),
+```
+
+
+
+
+
+## Contributions
+Feel free to contribute to this project.
+
+If you find a bug or want a feature, but don't know how to fix/implement it, please fill an [issue](https://github.com/abdelrahmanghanem/ui_widgets/issues).  
+If you fixed a bug or implemented a feature, please send a [pull request](https://github.com/abdelrahmanghanem/ui_widgets/pulls).
+
+<a href="https://github.com/abdelrahmanghanem/ui_widgets/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=abdelrahmanghanem/ui_widgets"  alt=""/>
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
